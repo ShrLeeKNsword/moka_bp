@@ -123,7 +123,7 @@ function App() {
                 <></>
                 :
                 <div className='absolute top-0 left-0 w-full h-full grid grid-rows-6 gap-2 py-2 px-1'>
-                  <Button theme='solid' onClick={() => {
+                  <Button theme='solid' disabled={data[index].state == -2} onClick={() => {
                     const newData = [...data];
                     newData[index] = { ...data[index], state: data[index].state == 1 ? 0 : 1 };
                     setData(newData);
@@ -135,7 +135,7 @@ function App() {
                     setData(newData);
                   }}>{data[index].state == -2 ? "撤销" : "禁用"}</Button>
 
-                  <Button theme='solid' onClick={() => {
+                  <Button theme='solid' disabled={data[index].state == -2} onClick={() => {
                     const newData = [...data];
                     newData[index] = { ...data[index], state: data[index].state == -1 ? 0 : - 1 };
                     setData(newData);
