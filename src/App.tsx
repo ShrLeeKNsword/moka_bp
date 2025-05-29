@@ -83,9 +83,9 @@ function App() {
   }, [data, connection])
 
   return (
-    <div className="relative w-screen min-w-[720px] aspect-video bg-gray-100 flex">
-      <div className='absolute top-0 w-full flex justify-center items-center text-red-500 text-4xl my-4'>{searchParams.A}</div>
-      <div className='absolute bottom-0 w-full flex justify-center items-center text-blue-500 text-4xl my-4'>{searchParams.B}</div>
+    <div className="relative w-screen min-w-[720px] aspect-video text-4xl font-bold xl:text-6xl bg-gray-100 flex">
+      <div className='absolute top-0 w-full flex justify-center items-center text-red-500 my-4 xl:my-12'>{searchParams.A}</div>
+      <div className='absolute bottom-0 w-full flex justify-center items-center text-blue-500 my-4 xl:my-12'>{searchParams.B}</div>
       <div className="absolute w-full top-0">
         {hash.current ?
           <></>
@@ -95,24 +95,24 @@ function App() {
             description="本页面为控制页面"
           />}
       </div>
-      <div className="grid grid-cols-8 gap-4 h-3/5 my-auto mx-6">
+      <div className="grid grid-cols-8 gap-4 xl:gap-8 h-3/5 my-auto mx-6 xl:mx-12 font-medium">
         {imgData.map((item, index) => (
           //通用显示
           <div key={index}
             className={`transition relative flex w-full 
-              ${(data[index].state == 1) ? "translate-y-[-30px]" : (data[index].state == -1) ? "translate-y-[30px]" : ""}`
+              ${(data[index].state == 1) ? "translate-y-[-12%]" : (data[index].state == -1) ? "translate-y-[12%]" : ""}`
             }>
-            <div className={`transition absolute w-full h-full overflow-hidden rounded-lg text-white text-xl
-              ${(data[index].state == 1 && data[index].opponent != 0) ? "translate-y-[30px]" : (data[index].state == -1 && data[index].opponent != 0) ? "translate-y-[-30px]" : ""}`}>
+            <div className={`transition absolute w-full h-full overflow-hidden rounded-lg text-white text-xl xl:text-5xl
+              ${(data[index].state == 1 && data[index].opponent != 0) ? "translate-y-[12%]" : (data[index].state == -1 && data[index].opponent != 0) ? "translate-y-[-12%]" : ""}`}>
               <div className='w-full h-1/2 bg-red-500 relative flex'>
-                <div className={`transition absolute top-0 w-full flex justify-center items-center my-1 ${data[index].opponent == 1 ? "opacity-0" : "opacity-100"}`}><LuSwords /></div>
-                <div className={`transition absolute top-0 w-full flex justify-center items-center my-1 ${data[index].opponent == -1 ? "opacity-0" : "opacity-100"}`}><FaShieldAlt /></div>
+                <div className={`transition absolute top-0 w-full flex justify-center items-center my-1 xl:my-3 ${data[index].opponent == 1 ? "opacity-0" : "opacity-100"}`}><LuSwords /></div>
+                <div className={`transition absolute top-0 w-full flex justify-center items-center my-1 xl:my-3 ${data[index].opponent == -1 ? "opacity-0" : "opacity-100"}`}><FaShieldAlt /></div>
               </div>
               <div className='w-full h-1/2 bg-blue-500 relative'>
-                <div className={`transition absolute bottom-0 w-full flex justify-center items-center my-1 ${data[index].opponent == 1 ? "opacity-0" : "opacity-100"}`}><LuSwords /></div>
-                <div className={`transition absolute bottom-0 w-full flex justify-center items-center my-1 ${data[index].opponent == -1 ? "opacity-0" : "opacity-100"}`}><FaShieldAlt /></div></div>
+                <div className={`transition absolute bottom-0 w-full flex justify-center items-center my-1 xl:my-3 ${data[index].opponent == 1 ? "opacity-0" : "opacity-100"}`}><LuSwords /></div>
+                <div className={`transition absolute bottom-0 w-full flex justify-center items-center my-1 xl:my-3 ${data[index].opponent == -1 ? "opacity-0" : "opacity-100"}`}><FaShieldAlt /></div></div>
             </div>
-            <div className='w-full h-full overflow-hidden relative flex rounded-lg'>
+            <div className='w-full h-full overflow-hidden relative flex rounded-lg shadow-lg shadow-black/60'>
               <img className='h-full object-cover w-full' src={item.img} alt={item.name} />
               <span className='absolute bottom-2 text-white text-xs xl:text-2xl w-full drop-shadow-lg'>{item.name}</span>
               <div className='absolute flex justify-center items-center w-full h-full text-center text-white text-5xl'>{data[index].order ? data[index].order : ""}</div>
