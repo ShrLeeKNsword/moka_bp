@@ -12,6 +12,16 @@ function App() {
   const [data, setData] = useState(initData)
   const hash = useRef(window.location.hash.slice(1))
   const [connection, setConnection] = useState<DataConnection | null>(null)
+  const [searchParams, setSearchParams] = useState({ A: '', B: '' })
+
+  //监听主客场信息
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setSearchParams({
+      A: params.get('A') || '',
+      B: params.get('B') || ''
+    })
+  }, [])
 
   // 初始化 peer 连接
   useEffect(() => {
@@ -74,6 +84,8 @@ function App() {
 
   return (
     <div className="relative w-screen min-w-[720px] aspect-video bg-gray-100 flex">
+      <div className='absolute top-0 w-full flex justify-center items-center text-red-500 text-4xl my-4'>{searchParams.A}</div>
+      <div className='absolute bottom-0 w-full flex justify-center items-center text-blue-500 text-4xl my-4'>{searchParams.B}</div>
       <div className="absolute w-full top-0">
         {hash.current ?
           <></>
@@ -97,12 +109,12 @@ function App() {
                 <div className={`transition absolute top-0 w-full flex justify-center items-center my-1 ${data[index].opponent == -1 ? "opacity-0" : "opacity-100"}`}><FaShieldAlt /></div>
               </div>
               <div className='w-full h-1/2 bg-blue-500 relative'>
-              <div className={`transition absolute bottom-0 w-full flex justify-center items-center my-1 ${data[index].opponent == 1 ? "opacity-0" : "opacity-100"}`}><LuSwords /></div>
+                <div className={`transition absolute bottom-0 w-full flex justify-center items-center my-1 ${data[index].opponent == 1 ? "opacity-0" : "opacity-100"}`}><LuSwords /></div>
                 <div className={`transition absolute bottom-0 w-full flex justify-center items-center my-1 ${data[index].opponent == -1 ? "opacity-0" : "opacity-100"}`}><FaShieldAlt /></div></div>
             </div>
             <div className='w-full h-full overflow-hidden relative flex rounded-lg'>
               <img className='h-full object-cover w-full' src={item.img} alt={item.name} />
-              <span className='absolute bottom-2 text-white text-xs w-full drop-shadow-lg'>{item.name}</span>
+              <span className='absolute bottom-2 text-white text-xs xl:text-2xl w-full drop-shadow-lg'>{item.name}</span>
               <div className='absolute flex justify-center items-center w-full h-full text-center text-white text-5xl'>{data[index].order ? data[index].order : ""}</div>
               {/*被ban时显示*/}
               <div className={`transition absolute top-0 left-0 w-full h-full ${data[index].state == -2 ? "opacity-100" : "opacity-0"} bg-black/50`}></div>
