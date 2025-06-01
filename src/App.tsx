@@ -102,7 +102,7 @@ function App() {
             className={`transition relative flex w-full
               ${(data[index].state == 1) ? "translate-y-[-12%]" : (data[index].state == -1) ? "translate-y-[12%]" : ""}`
             }>
-            <div className={`transition absolute w-full h-full overflow-hidden rounded-lg text-white text-xl xl:text-5xl shadow-lg shadow-black/60
+            <div className={`transition absolute w-full h-full overflow-hidden rounded-lg text-white text-xl xl:text-5xl
               ${(data[index].state == 1 && data[index].opponent != 0) ? "translate-y-[12%]" : (data[index].state == -1 && data[index].opponent != 0) ? "translate-y-[-12%]" : ""}`}>
               <div className='w-full h-1/2 bg-red-500 relative flex'>
                 <div className={`transition absolute top-0 w-full flex justify-center items-center my-1 xl:my-3 ${data[index].opponent == 1 ? "opacity-0" : "opacity-100"}`}><LuSwords /></div>
